@@ -1,9 +1,22 @@
 /* @refresh reload */
-import { render } from 'solid-js/web'
+import { render } from "solid-js/web";
+import { HashRouter, Route, Router } from "@solidjs/router";
 
-import './index.css'
-import App from './App'
+import "./index.css";
 
-const root = document.getElementById('root')
+import Home from "./pages/home";
+import HowToPlay from "./pages/how-to-play";
+import PickCategory from "./pages/pick-category";
+import Play from "./pages/play";
 
-render(() => <App />, root!)
+render(
+  () => (
+    <HashRouter>
+      <Route path="/" component={Home} />
+      <Route path="/how-to-play" component={HowToPlay} />
+      <Route path="/pick-category" component={PickCategory} />
+      <Route path="/play/:category" component={Play} />
+    </HashRouter>
+  ),
+  document.getElementById("root")!
+);

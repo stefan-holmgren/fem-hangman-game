@@ -2,6 +2,6 @@ import { defineConfig } from "vite";
 import solid from "vite-plugin-solid";
 
 export default defineConfig({
-  base: "/fem-hangman-game/",
+  base: "/fem-hangman-game",
   plugins: [solid()],
 });
