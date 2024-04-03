@@ -49,7 +49,8 @@ canvas {
 :root {
   --fs-heading-s: 1.5rem;
   --fs-heading-m: 2rem;
-  --fs-heading-l: 3rem;
+  --fs-heading-l: 2.5rem;
+  --fs-heading-xl: 3rem;
 
   --fs-body-m: 1rem;
 

@@ -1,7 +1,7 @@
 import style from "./Home.module.scss";
 import logo from "/assets/images/logo.svg";
-import PlayButton from "../../components/PlayButton";
-import Button from "../../components/Button";
+import PlayButton from "@/components/PlayButton";
+import Button from "@/components/Button";
 
 export default function Home() {
   return (
