@@ -1,0 +1,25 @@
+.tutorial-section {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 1.25rem;
+
+  display: grid;
+  gap: 1rem;
+
+  font-size: var(--fs-body-m);
+  letter-spacing: 0.05em;
+  line-height: 1.2;
+  color: #887dc0;
+
+  h2 {
+    font-size: var(--fs-heading-s);
+    display: flex;
+    gap: 1rem;
+    text-transform: uppercase;
+    color: #261676
+  }
+  
+  .index {
+    color: #2463ff;
+  }
+}

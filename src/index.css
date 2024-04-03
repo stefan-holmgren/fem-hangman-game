@@ -46,6 +46,18 @@ canvas {
   src: url("/assets/fonts/MouseMemoirs-Regular.ttf") format("truetype");
 }
 
+:root {
+  --fs-heading-s: 1.5rem;
+  --fs-heading-m: 2rem;
+  --fs-heading-l: 3rem;
+
+  --fs-body-m: 1rem;
+
+  --anim-duration: 0.3s;
+}
+
 body {
   font-family: "Mouse Memoirs", sans-serif;
+  min-height: 100vh;
+  background: url("/assets/images/background-mobile.svg") no-repeat center center / cover;
 }

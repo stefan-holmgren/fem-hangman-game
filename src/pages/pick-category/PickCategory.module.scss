@@ -1,0 +1,16 @@
+.pick-category {
+  padding: 2rem 1.5rem 0;
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  ul {
+    margin: 6.25rem auto;
+    max-width: 21rem;
+    display: grid;
+    gap: 1rem;
+  }
+}

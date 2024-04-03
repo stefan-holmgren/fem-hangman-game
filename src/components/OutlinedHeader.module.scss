@@ -1,0 +1,22 @@
+.header-link {
+  /* this will be set in javascript */
+  display: block;
+  position: relative;
+  font-size: var(--fs-heading-l);
+  
+  letter-spacing: 0.05em;
+
+  span.text {
+    position: absolute;
+    color: white;
+    background: linear-gradient(to bottom, #67B6FF, #fff);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    inset: 0;
+  }
+
+  span.outline {
+    position: relative; 
+    -webkit-text-stroke: 0.5rem #243041;
+  }
+}

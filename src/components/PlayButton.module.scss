@@ -1,0 +1,35 @@
+.play-button {
+  $clr-bg-gradient-from: #fe71fe;
+  $clr-bg-gradient-to: #7199ff;
+  
+  position: relative;
+  margin: auto;
+  display: grid;
+  place-items: center;
+  width: 10rem;
+  aspect-ratio: 1;
+  border-radius: 100%;
+  background: linear-gradient(to bottom, $clr-bg-gradient-from, $clr-bg-gradient-to);
+  box-shadow: inset 0 -0.25rem 0 0.3125rem #243041, inset 0 -0.75rem 0 0.6875rem #9D2DF5;
+  z-index: 0;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: inset 0 -0.25rem 0 0.3125rem #243041, inset 0 -0.75rem 0 0.6875rem #9D2DF5;
+    border-radius: 100%;
+    opacity: 0;
+    transition: opacity var(--anim-duration);
+    z-index: -1;
+  }
+
+  &:hover::after {
+    opacity: 1;
+  }
+
+  img {
+    width: 3.5rem;
+  }
+}

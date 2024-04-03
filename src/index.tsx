@@ -4,10 +4,10 @@ import { HashRouter, Route } from "@solidjs/router";
 
 import "./index.css";
 
-import Home from "./pages/home";
-import HowToPlay from "./pages/how-to-play";
-import PickCategory from "./pages/pick-category";
-import Play from "./pages/play";
+import Home from "./pages/home/Home";
+import HowToPlay from "./pages/how-to-play/HowToPlay";
+import PickCategory from "./pages/pick-category/PickCategory";
+import Play from "./pages/play/Play";
 
 render(
   () => (
