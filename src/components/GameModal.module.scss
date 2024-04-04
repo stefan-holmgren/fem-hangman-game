@@ -1,0 +1,12 @@
+.game-modal {
+  position: absolute;
+  inset: 0;
+  display:grid;
+  place-items: center;
+
+  .header {
+    --outline-size: 1.0rem;
+    font-size: var(--fs-heading-2xl);
+    letter-spacing: -0.005em;
+  }
+}

@@ -1,4 +1,6 @@
-.header-link {
+.outlined-header {
+  --outline-size: 0.5rem;
+
   /* this will be set in javascript */
   display: block;
   position: relative;
@@ -17,6 +19,6 @@
 
   span.outline {
     position: relative; 
-    -webkit-text-stroke: 0.5rem #243041;
+    -webkit-text-stroke: var(--outline-size) #243041;
   }
 }
