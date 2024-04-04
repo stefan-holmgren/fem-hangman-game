@@ -1,6 +1,6 @@
 /* @refresh reload */
 import { render } from "solid-js/web";
-import { HashRouter, Route } from "@solidjs/router";
+import { HashRouter } from "@solidjs/router";
 
 import "./index.css";
 
