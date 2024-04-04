@@ -2,6 +2,9 @@ import Backdrop from "@/components/Backdrop";
 import style from "./Play.module.scss";
 import { useNavigate, useParams } from "@solidjs/router";
 import data from "@/assets/data.json";
+import MenuButton from "@/components/MenuButton";
+import Health from "./components/Health";
+import Letters from "./components/Letters";
 
 export default function Play() {
   const params = useParams();
@@ -17,7 +20,14 @@ export default function Play() {
 
   return (
     <Backdrop class={style.play}>
-      <header>{selectedCategoryKey}</header>
+      <header>
+        <div class={style.category}>
+          <MenuButton onClick={() => alert("MENU")} />
+          <span>{selectedCategoryKey}</span>
+        </div>
+        <Health percentage={100} />
+      </header>
+      <Letters onLetterClicked={(letter) => console.log(letter)} />
     </Backdrop>
   );
 }

@@ -8,5 +8,14 @@
     color: white;
     line-height: 1.2;
     letter-spacing: -0.005em;
+  
+    justify-content: space-between;
+
+    .category {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
   }
 }

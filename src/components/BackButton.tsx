@@ -6,9 +6,9 @@ type BackButtonProps = {
   href: string;
 };
 
-export default function BackButton({ href }: BackButtonProps) {
+export default function BackButton(props: BackButtonProps) {
   return (
-    <HeaderButton class={style["back-button"]} href={href}>
+    <HeaderButton as="A" class={style["back-button"]} href={props.href}>
       <img src={backIcon} alt="Back" />
     </HeaderButton>
   );

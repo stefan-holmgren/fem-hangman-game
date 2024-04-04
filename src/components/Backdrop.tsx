@@ -6,6 +6,6 @@ type BackdropProps = {
   children?: JSX.Element;
 };
 
-export default function Backdrop({ class: className, children }: BackdropProps) {
-  return <main class={`${style.backdrop} ${className ?? ""}`}>{children}</main>;
+export default function Backdrop(props: BackdropProps) {
+  return <main class={`${style.backdrop} ${props.class ?? ""}`}>{props.children}</main>;
 }

@@ -6,9 +6,9 @@ type PlayButtonProps = {
   href: string;
 };
 
-export default function PlayButton({ href }: PlayButtonProps) {
+export default function PlayButton(props: PlayButtonProps) {
   return (
-    <A class={style["play-button"]} href={href}>
+    <A class={style["play-button"]} href={props.href}>
       <img src={playIcon} alt="Play" />
     </A>
   );

@@ -1,0 +1,37 @@
+.letters {
+  margin: auto;
+
+  display: grid;
+  gap: 0.5rem;
+
+  max-width: 23rem;
+
+  grid-template-columns: repeat(9, 1fr);
+
+  button {
+    width: 100%;
+    border: none;
+    cursor: pointer;
+
+    padding: 0.625rem 0;
+
+    color: #261676;
+    background: white;
+    border-radius: 0.5rem;
+
+    font-size: var(--fs-heading-s);
+    line-height: 1.5;
+
+    transition: background-color var(--anim-duration), color var(--anim-duration);
+
+    &:disabled{
+      cursor: not-allowed;
+      opacity: 0.25;
+    } 
+
+    &:hover:not(:disabled) {
+      background: #2463FF;
+      color: white;
+    }
+  }
+}

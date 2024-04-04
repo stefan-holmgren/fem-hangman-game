@@ -1,0 +1,26 @@
+.health {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+
+  .health-bar {
+    width: 3.5rem;
+    height: 1rem;
+    background-color: white;
+    border-radius: 100vw;
+    padding: 0.25rem;
+  }
+
+  .health-bar-fill {
+    height: 100%;
+    width: 50%;
+    background-color: #261676;
+    border-radius: 100vw;
+    height: 0.5rem;
+    width: 50%;
+  }
+
+  img {
+    height: 1.5rem;
+  }
+}
