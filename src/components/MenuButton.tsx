@@ -8,7 +8,7 @@ type MenuButtonProps = {
 
 export default function MenuButton(props: MenuButtonProps) {
   return (
-    <HeaderButton as="button" class={style["menu-button"]} onClick={() => props.onClick()}>
+    <HeaderButton class={style["menu-button"]} onClick={() => props.onClick()}>
       <img src={menuIcon} alt="Menu" />
     </HeaderButton>
   );

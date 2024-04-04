@@ -1,3 +1,4 @@
+import { JSX } from "solid-js";
 import Backdrop from "./Backdrop";
 import style from "./GameModal.module.scss";
 import Modal from "./Modal";
@@ -6,6 +7,7 @@ import OutlinedHeader from "./OutlinedHeader";
 
 type GameModalProps = {
   title: string;
+  children?: JSX.Element;
 };
 
 export default function GameModal(props: GameModalProps) {
@@ -15,6 +17,7 @@ export default function GameModal(props: GameModalProps) {
         <ModalHeader>
           <OutlinedHeader class={style.header} label={props.title} />
         </ModalHeader>
+        {props.children}
       </Modal>
     </Backdrop>
   );

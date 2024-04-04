@@ -5,11 +5,14 @@
   --clr-shadow: #140e66;
   --clr-highlight: #3c74ff;
   --border-radius: 100vw;
+  cursor: pointer;
   position: relative;
   display: block;
-  padding: 0.75rem 3.9rem;
+  padding: 0.75rem 3.8rem;
   border-radius: var(--border-radius);
   color: #fff;
+  border: none;
+  margin:auto;
   font-size: var(--fs-heading-m);
   text-transform: uppercase;
   letter-spacing: 0.05em;

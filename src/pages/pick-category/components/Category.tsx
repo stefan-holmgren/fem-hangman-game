@@ -1,9 +1,9 @@
-import { A, AnchorProps } from "@solidjs/router";
 import style from "./Category.module.scss";
-import buttonStyle from "@/components/Button.module.scss";
+import ButtonLink from "@/components/ButtonLink";
+import { ComponentProps } from "solid-js";
 
-type CategoryProps = AnchorProps;
+type CategoryProps = ComponentProps<typeof ButtonLink>;
 
 export default function Category(props: CategoryProps) {
-  return <A class={`${buttonStyle.button} ${style.category}`} {...props} />;
+  return <ButtonLink class={`${style.category} ${props.class ?? ""}`} {...props} />;
 }

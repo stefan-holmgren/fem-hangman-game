@@ -1,9 +1,9 @@
 import style from "./Home.module.scss";
 import logo from "/assets/images/logo.svg";
 import PlayButton from "@/components/PlayButton";
-import Button from "@/components/Button";
 import Modal from "@/components/Modal";
 import ModalHeader from "@/components/ModalHeader";
+import ButtonLink from "@/components/ButtonLink";
 
 export default function Home() {
   return (
@@ -17,7 +17,7 @@ export default function Home() {
             <PlayButton href="/pick-category" />
           </li>
           <li>
-            <Button href="/how-to-play">How to Play</Button>
+            <ButtonLink href="/how-to-play">How to Play</ButtonLink>
           </li>
         </ul>
       </Modal>

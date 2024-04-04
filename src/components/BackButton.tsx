@@ -1,6 +1,6 @@
 import style from "./BackButton.module.scss";
 import backIcon from "/assets/images/icon-back.svg";
-import HeaderButton from "./HeaderButton";
+import HeaderButtonLink from "./HeaderButtonLink";
 
 type BackButtonProps = {
   href: string;
@@ -8,8 +8,8 @@ type BackButtonProps = {
 
 export default function BackButton(props: BackButtonProps) {
   return (
-    <HeaderButton as="A" class={style["back-button"]} href={props.href}>
+    <HeaderButtonLink class={style["back-button"]} href={props.href}>
       <img src={backIcon} alt="Back" />
-    </HeaderButton>
+    </HeaderButtonLink>
   );
 }

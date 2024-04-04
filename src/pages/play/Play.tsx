@@ -5,7 +5,7 @@ import data from "@/assets/data.json";
 import MenuButton from "@/components/MenuButton";
 import Health from "./components/Health";
 import Letters from "./components/Letters";
-import GameModal from "@/components/GameModal";
+import PauseMenu from "./components/PauseMenu";
 
 export default function Play() {
   const params = useParams();
@@ -17,6 +17,8 @@ export default function Play() {
     navigate("/");
     return;
   }
+
+  console.log("Play component rendered!");
 
   return (
     <>
@@ -30,7 +32,7 @@ export default function Play() {
         </header>
         <Letters onLetterClicked={(letter) => console.log(letter)} />
       </Backdrop>
-      <GameModal title="Paused" />
+      <PauseMenu />
     </>
   );
 }
