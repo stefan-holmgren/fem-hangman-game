@@ -9,4 +9,10 @@
     font-size: var(--fs-heading-2xl);
     letter-spacing: -0.005em;
   }
+
+  .menu {
+    display: grid;
+    gap: 2.125rem;
+  }
+  
 }

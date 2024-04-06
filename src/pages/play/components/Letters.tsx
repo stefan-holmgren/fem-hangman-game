@@ -1,13 +1,13 @@
-import { For, createSignal } from "solid-js";
+import { For } from "solid-js";
 import style from "./Letters.module.scss";
 
 type LettersProps = {
   class?: string;
   onLetterClicked: (letter: string) => void;
+  selectedLetters: string[];
 };
 
 export default function Letters(props: LettersProps) {
-  const [userLetters, setUsedLetters] = createSignal<string>("");
   const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
   return (
@@ -16,9 +16,8 @@ export default function Letters(props: LettersProps) {
         {(letter) => (
           <li>
             <button
-              disabled={userLetters().includes(letter)}
+              disabled={props.selectedLetters.includes(letter)}
               onClick={() => {
-                setUsedLetters(userLetters() + letter);
                 props.onLetterClicked(letter);
               }}
             >

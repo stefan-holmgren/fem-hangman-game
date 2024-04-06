@@ -9,7 +9,7 @@ export default function Health(props: HealthProps) {
   return (
     <div class={style.health}>
       <div class={style["health-bar"]}>
-        <div class={style["health-bar-fill"]} style={{ width: `${props.percentage}%` }} />
+        <div class={style["health-bar-fill"]} style={{ width: `${100 - props.percentage}%` }} />
       </div>
       <img src={heartIcon} alt="" />
     </div>
