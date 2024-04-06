@@ -1,9 +1,11 @@
 .letters {
-  margin: auto;
+  margin: 2rem auto 5rem;
 
   display: grid;
-  gap: 0.5rem;
+  column-gap: 0.5rem;
+  row-gap: 1.5rem;
 
+  width: 100%;
   max-width: 23rem;
 
   grid-template-columns: repeat(9, 1fr);

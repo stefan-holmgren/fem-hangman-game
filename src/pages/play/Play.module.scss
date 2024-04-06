@@ -1,6 +1,9 @@
 .play {
   padding: 3rem 1.5rem 0;
 
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 0fr 1fr;
   header {
     display: flex;
     align-items: center;

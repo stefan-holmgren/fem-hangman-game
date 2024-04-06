@@ -7,8 +7,8 @@ import Health from "./components/Health";
 import Letters from "./components/Letters";
 import PauseMenuModal from "./components/PauseMenuModal";
 import GameEndMenuModal from "./components/GameEndMenuModal";
-import { createEffect, createMemo, createSignal, onMount } from "solid-js";
-import Button from "@/components/Button";
+import { createMemo, createSignal, onMount } from "solid-js";
+import SecretText from "./components/SecretText";
 
 // The max health (turns) the player has to guess the word(s)
 const MAX_HEALTH = 8;
@@ -25,7 +25,8 @@ export default function Play() {
   const [gameEndMenuOpen, setGameEndMenuOpen] = createSignal(false);
   const [gameEndTitle, setGameEndTitle] = createSignal("You Win");
   const [selectedText, setSelectedText] = createSignal("");
-  const [selectedLetters, setSelectedLetters] = createSignal<string[]>([]);
+  const [guessedLetters, setGuessedLetters] = createSignal<string[]>([]);
+  const [remainingLetters, setRemainingLetters] = createSignal<Set<string>>(new Set());
   const [health, setHealth] = createSignal(MAX_HEALTH);
 
   const healthPercentage = createMemo(() => (health() / MAX_HEALTH) * 100);
@@ -36,15 +37,25 @@ export default function Play() {
   }
 
   const getRemainingTexts = () => categories[selectedCategoryKey].filter((text) => !text.selected);
-  const getRandomText = () => getRemainingTexts()[Math.floor(Math.random() * getRemainingTexts().length)];
+  // const getRandomText = () => getRemainingTexts()[Math.floor(Math.random() * getRemainingTexts().length)];
+  const getRandomText = () => ({ name: "helloer", selected: false });
+
+  const deconstructText = (text: string) =>
+    new Set(
+      text
+        .toUpperCase()
+        .split("")
+        .filter((char) => char !== " ")
+    );
 
   const startGame = () => {
     setHealth(MAX_HEALTH);
-    setSelectedLetters([]);
+    setGuessedLetters([]);
     const randomText = getRandomText();
     if (randomText) {
       randomText.selected = true;
       setSelectedText(randomText.name);
+      setRemainingLetters(deconstructText(randomText.name));
     }
   };
 
@@ -65,9 +76,22 @@ export default function Play() {
     }
   };
 
-  createEffect(() => {
-    console.log("Health Percentage", healthPercentage());
-  });
+  const goodGuess = (letter: string) => {
+    remainingLetters().delete(letter);
+    setRemainingLetters(new Set(remainingLetters()));
+    if (remainingLetters().size === 0) {
+      winGame();
+    }
+  };
+
+  const guess = (letter: string) => {
+    setGuessedLetters([...guessedLetters(), letter]);
+    if (!remainingLetters().has(letter)) {
+      wrongGuess();
+      return;
+    }
+    goodGuess(letter);
+  };
 
   onMount(startGame);
 
@@ -81,13 +105,8 @@ export default function Play() {
           </div>
           <Health percentage={healthPercentage()} />
         </header>
-        <Letters
-          selectedLetters={selectedLetters()}
-          onLetterClicked={(letter) => {
-            setSelectedLetters([...selectedLetters(), letter]);
-            wrongGuess();
-          }}
-        />
+        <SecretText secretText={selectedText()} guessedLetters={guessedLetters()} />
+        <Letters selectedLetters={guessedLetters()} onLetterClicked={guess} />
       </Backdrop>
       <PauseMenuModal open={pauseMenuOpen()} onClose={() => setPauseMenuOpen(false)} />
       <GameEndMenuModal
