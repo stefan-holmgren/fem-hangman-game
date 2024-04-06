@@ -1,3 +1,5 @@
+@import "@/mixins.scss";
+
 .health {
   display: flex;
   gap: 1rem;
@@ -9,18 +11,32 @@
     background-color: white;
     border-radius: 100vw;
     padding: 0.25rem;
-  }
 
-  .health-bar-fill {
-    height: 100%;
-    width: 50%;
-    background-color: #261676;
-    border-radius: 100vw;
-    height: 0.5rem;
-    width: 50%;
+    .health-bar-fill {
+      height: 100%;
+      width: 50%;
+      background-color: #261676;
+      border-radius: 100vw;
+      height: 100%;
+      width: 50%;
+    }
+
+    @include bp-tablet {
+      width: 10rem;
+      height: 2rem;
+      padding: 0.5rem 0.75rem;
+    }
   }
 
   img {
     height: 1.5rem;
+
+    @include bp-tablet {
+      height: 3rem;
+    }
+  }
+
+  @include bp-tablet {
+    gap: 2.5rem;
   }
 }

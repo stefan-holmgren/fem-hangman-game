@@ -1,8 +1,14 @@
+@import "@/mixins.scss";
+
 .menu-button {
   cursor: pointer;
 
   img {
     width: 1rem;
     aspect-ratio: 1;
+
+    @include bp-tablet {
+      width: 1.625rem;
+    }
   }
 }

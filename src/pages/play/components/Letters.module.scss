@@ -1,3 +1,5 @@
+@import "@/mixins.scss";
+
 .letters {
   margin: 2rem auto 5rem;
 
@@ -10,6 +12,8 @@
 
   grid-template-columns: repeat(9, 1fr);
 
+  font-size: var(--fs-heading-s);
+
   button {
     width: 100%;
     border: none;
@@ -21,19 +25,28 @@
     background: white;
     border-radius: 0.5rem;
 
-    font-size: var(--fs-heading-s);
     line-height: 1.5;
 
     transition: background-color var(--anim-duration), color var(--anim-duration);
 
-    &:disabled{
+    &:disabled {
       cursor: not-allowed;
       opacity: 0.25;
-    } 
+    }
 
     &:hover:not(:disabled) {
-      background: #2463FF;
+      background: #2463ff;
       color: white;
     }
+
+    @include bp-tablet {
+      border-radius: 1.5rem;
+    }
+  }
+
+  @include bp-tablet {
+    max-width: 44rem;
+    column-gap: 1rem;
+    font-size: var(--fs-heading-xl);
   }
 }

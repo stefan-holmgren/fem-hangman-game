@@ -1,3 +1,5 @@
+@import "@/mixins.scss";
+
 .outlined-header {
   --outline-size: 0.5rem;
 
@@ -5,20 +7,26 @@
   display: block;
   position: relative;
   font-size: var(--fs-heading-xl);
-  
+
   letter-spacing: 0.05em;
 
   span.text {
     position: absolute;
     color: white;
-    background: linear-gradient(to bottom, #67B6FF, #fff);
+    background: linear-gradient(to bottom, #67b6ff, #fff);
     background-clip: text;
     -webkit-text-fill-color: transparent;
     inset: 0;
   }
 
   span.outline {
-    position: relative; 
+    position: relative;
     -webkit-text-stroke: var(--outline-size) #243041;
+  }
+
+  @include bp-tablet {
+    --outline-size: 1rem;
+    letter-spacing: -0.005em;
+    font-size: var(--fs-heading-5xl);
   }
 }

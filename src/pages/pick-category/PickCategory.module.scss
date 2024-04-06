@@ -1,16 +1,14 @@
-.pick-category {
-  padding: 2rem 1.5rem 0;
+@import "@/mixins.scss";
 
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
+.categories {
+  margin: 6.25rem auto 3rem;
+  max-width: 21rem;
+  display: grid;
+  gap: 1rem;
 
-  ul {
-    margin: 6.25rem auto;
-    max-width: 21rem;
-    display: grid;
-    gap: 1rem;
+  @include bp-tablet {
+    gap: 2rem;
+    max-width: 42.5rem;
+    grid-template-columns: 1fr 1fr;
   }
 }

@@ -1,18 +1,25 @@
+@import "@/mixins.scss";
+
 .game-modal {
   position: absolute;
   inset: 0;
-  display:grid;
+  display: grid;
   place-items: center;
 
   .header {
-    --outline-size: 1.0rem;
-    font-size: var(--fs-heading-2xl);
+    --outline-size: 1rem;
+    font-size: var(--fs-heading-4xl);
     letter-spacing: -0.005em;
+
+    @include bp-tablet {
+      --outline-size: 1rem;
+      font-size: var(--fs-heading-6xl);
+    }
   }
 
   .menu {
     display: grid;
     gap: 2.125rem;
+    text-align: center;
   }
-  
 }

@@ -1,6 +1,6 @@
-.main {
-  $anim-duration: 0.3s;
+@import "@/mixins.scss";
 
+.main {
   min-height: 100vh;
 
   padding: 0 1.625rem;
@@ -11,17 +11,24 @@
   ul {
     display: grid;
     gap: 3.6rem;
+    text-align: center;
   }
 
   .logo {
     width: calc(100% - 4rem);
+
+    @include bp-tablet {
+      max-width: calc(100% - 14rem);
+      transform: translateY(-35%);
+    }
   }
 
   .popup {
-    padding-top: 9rem;
+    padding-top: 12rem;
     margin-top: 4rem;
-  }
 
-  @media (min-width: 48rem) {
+    @include bp-tablet {
+      max-width: 40rem;
+    }
   }
 }

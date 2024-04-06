@@ -1,23 +1,16 @@
-import BackButton from "../../components/BackButton";
-import Backdrop from "../../components/Backdrop";
-import OutlinedHeader from "../../components/OutlinedHeader";
-
 import style from "./PickCategory.module.scss";
 import Category from "./components/Category";
 
 import data from "../../assets/data.json";
 import { For } from "solid-js";
+import Page from "@/components/Page";
 
 export default function PickCategory() {
   const categories = Object.keys(data.categories);
 
   return (
-    <Backdrop class={style["pick-category"]}>
-      <header>
-        <BackButton href="/" />
-        <OutlinedHeader label="Pick a Category" />
-      </header>
-      <ul>
+    <Page title="Pick a Category" backHref="/">
+      <ul class={style.categories}>
         <For each={categories}>
           {(category) => (
             <li>
@@ -26,6 +19,6 @@ export default function PickCategory() {
           )}
         </For>
       </ul>
-    </Backdrop>
+    </Page>
   );
 }

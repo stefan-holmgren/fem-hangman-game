@@ -1,5 +1,11 @@
+@import "@/mixins.scss";
+
 .back-button {
   img {
     height: 1rem;
+
+    @include bp-tablet {
+      height: 1.625rem;
+    }
   }
 }

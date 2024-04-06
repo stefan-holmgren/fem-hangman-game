@@ -2,7 +2,7 @@
 import { render } from "solid-js/web";
 import { HashRouter } from "@solidjs/router";
 
-import "./index.css";
+import "./index.scss";
 
 import Routes from "./Routes";
 

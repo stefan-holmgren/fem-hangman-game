@@ -1,9 +1,16 @@
-.backdrop {
-  min-height: 100vh;
+@import "@/mixins.scss";
+
+.page {
+  padding: 2rem 1.5rem 3.75rem;
+
   background: linear-gradient(
     to bottom,
     hsla(270, 82%, 14%, 0.75) 0%,
     hsla(240, 66%, 29%, 0.75) 75%,
     hsla(251, 65%, 29%, 0.75) 100%
   );
+
+  @include bp-tablet {
+    padding: 3.75rem 2.5rem 6rem;
+  }
 }

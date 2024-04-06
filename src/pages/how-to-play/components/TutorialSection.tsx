@@ -12,11 +12,9 @@ export default function TutorialSection({ index, title, children }: TutorialSect
 
   return (
     <section class={style["tutorial-section"]}>
-      <h2>
-        <span class={style["index"]}>{paddedIndex}</span>
-        <span class={style["title"]}>{title}</span>
-      </h2>
-      <div>{children}</div>
+      <span class={style.index}>{paddedIndex}</span>
+      <span class={style.title}>{title}</span>
+      <div class={style.content}>{children}</div>
     </section>
   );
 }

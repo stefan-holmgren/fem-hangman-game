@@ -1,18 +1,13 @@
-.how-to-play {
-  padding: 2rem 1.5rem 3.75rem;
+@import "@/mixins.scss";
 
-  background: linear-gradient(to bottom, hsla(270, 82%, 14%, 0.75) 0%, hsla(240, 66%, 29%, 0.75) 75%, hsla(251, 65%, 29%, 0.75) 100%);
+.tutorial {
+  margin: 5rem auto 0;
+  max-width: 21rem;
+  display: grid;
+  gap: 1.5rem;
 
-  header { 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .tutorial {
-    margin: 5rem auto 0;
-    max-width: 21rem;
-    display: grid;
-    gap: 1.5rem;
+  @include bp-tablet {
+    max-width: 42.5rem;
+    gap: 2rem;
   }
 }

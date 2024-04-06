@@ -1,16 +1,10 @@
 import style from "./HowToPlay.module.scss";
-import OutlinedHeader from "../../components/OutlinedHeader";
-import BackButton from "../../components/BackButton";
 import TutorialSection from "./components/TutorialSection";
-import Backdrop from "../../components/Backdrop";
+import Page from "@/components/Page";
 
 export default function HowToPlay() {
   return (
-    <Backdrop class={style["how-to-play"]}>
-      <header>
-        <BackButton href="/" />
-        <OutlinedHeader label="How to Play" />
-      </header>
+    <Page title="How to Play" backHref="/">
       <ul class={style.tutorial}>
         <li>
           <TutorialSection index={1} title="Choose a category">
@@ -31,6 +25,6 @@ export default function HowToPlay() {
           </TutorialSection>
         </li>
       </ul>
-    </Backdrop>
+    </Page>
   );
 }

@@ -1,3 +1,5 @@
+@import "@/mixins.scss";
+
 .category {
   --border-radius: 1.25rem;
   display: block;
@@ -7,4 +9,14 @@
   letter-spacing: 0.05em;
   color: #fff;
   padding: 1.5rem 4rem;
+
+  @include bp-tablet {
+    font-size: var(--fs-heading-xl);
+    aspect-ratio: 1.77;
+    padding: 2rem 5rem;
+    display: grid;
+    place-content: center;
+    padding: 1.5rem;
+    --border-radius: 2.5rem;
+  }
 }
