@@ -3,6 +3,7 @@ import { createMemo } from "solid-js";
 import SecretWord from "./SecretWord";
 
 type SecretTextProps = {
+  class?: string;
   secretText: string;
   guessedLetters: string[];
 };
@@ -10,10 +11,8 @@ type SecretTextProps = {
 export default function SecretText(props: SecretTextProps) {
   const words = createMemo(() => props.secretText.split(" "));
 
-  let rootElement: HTMLUListElement | undefined;
-
   return (
-    <ul ref={rootElement} class={style["secret-text"]}>
+    <ul class={`${style["secret-text"]} ${props.class}`}>
       {words().map((word) => {
         return (
           <li>

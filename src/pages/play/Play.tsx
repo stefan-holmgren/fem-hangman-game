@@ -37,8 +37,7 @@ export default function Play() {
   }
 
   const getRemainingTexts = () => categories[selectedCategoryKey].filter((text) => !text.selected);
-  // const getRandomText = () => getRemainingTexts()[Math.floor(Math.random() * getRemainingTexts().length)];
-  const getRandomText = () => ({ name: "Hej pumpernickel", selected: false });
+  const getRandomText = () => getRemainingTexts()[Math.floor(Math.random() * getRemainingTexts().length)];
 
   const deconstructText = (text: string) =>
     new Set(

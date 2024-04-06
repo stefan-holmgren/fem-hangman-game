@@ -1,9 +1,12 @@
 .play {
-  padding: 3rem 1.5rem 0;
-
+  padding: 3rem 1.5rem;
   display: grid;
   grid-template-columns: 100%;
-  grid-template-rows: 0fr 1fr;
+  grid-template-rows: 0fr 1fr auto;
+  gap: 2rem;
+  max-height: 100vh;
+  max-height: 100svh;
+
   header {
     display: flex;
     align-items: center;
@@ -11,7 +14,7 @@
     color: white;
     line-height: 1.2;
     letter-spacing: -0.005em;
-  
+
     justify-content: space-between;
 
     .category {
