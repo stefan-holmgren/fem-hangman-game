@@ -14,26 +14,34 @@
 
   .index,
   .title {
-    font-size: var(--fs-heading-s);
+    font-size: 1.5rem;
     text-transform: uppercase;
 
     @include bp-tablet {
-      font-size: var(--fs-heading-l);
+      font-size: 2.5rem;
       letter-spacing: 0.05em;
+    }
+
+    @include bp-desktop {
+      font-size: 3rem;
     }
   }
 
   .content {
     grid-column: span 2;
-    font-size: var(--fs-body-m);
+    font-size: 1rem;
     letter-spacing: 0.05em;
     line-height: 1.2;
     color: #887dc0;
 
     @include bp-tablet {
       grid-column: 2;
-      font-size: var(--fs-body-l);
-      letter-spacing: 0.05em;
+      font-size: 1.25rem;
+    }
+
+    @include bp-desktop {
+      grid-column: 1;
+      font-size: 1.625rem;
     }
   }
 
@@ -48,8 +56,12 @@
       display: grid;
       place-content: center;
       grid-row: span 2;
-      font-size: var(--fs-heading-3xl);
+      font-size: 5.5rem;
       letter-spacing: 0;
+    }
+
+    @include bp-desktop {
+      grid-row: 1;
     }
   }
 
@@ -57,5 +69,14 @@
     padding: 2rem 2.5rem;
     border-radius: 2.5rem;
     column-gap: 2.5rem;
+  }
+
+  @include bp-desktop {
+    height: 100%;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0fr 0fr 0fr;
+    text-align: center;
+    row-gap: 2.5rem;
+    padding: 3.75rem;
   }
 }

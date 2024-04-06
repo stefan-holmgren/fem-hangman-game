@@ -10,5 +10,9 @@
     @include bp-tablet {
       width: 1.625rem;
     }
+
+    @include bp-desktop {
+      width: 2.375rem;
+    }
   }
 }

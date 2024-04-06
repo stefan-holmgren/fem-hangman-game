@@ -7,5 +7,10 @@
     @include bp-tablet {
       height: 1.625rem;
     }
+
+    @include bp-desktop {
+      height: 2.375rem;
+      transform: translateY(-15%);
+    }
   }
 }

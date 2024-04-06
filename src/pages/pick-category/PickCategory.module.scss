@@ -11,4 +11,10 @@
     max-width: 42.5rem;
     grid-template-columns: 1fr 1fr;
   }
+
+  @include bp-desktop {
+    max-width: 76rem;
+    margin-top: 9.5rem;
+    grid-template-columns: repeat(3, 1fr);
+  }
 }

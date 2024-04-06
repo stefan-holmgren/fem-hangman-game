@@ -12,7 +12,7 @@
   header {
     display: flex;
     align-items: center;
-    font-size: var(--fs-heading-l);
+    font-size: 2.5rem;
     color: white;
     line-height: 1.2;
     letter-spacing: -0.005em;
@@ -27,8 +27,15 @@
       @include bp-tablet {
         gap: 2rem;
         text-transform: uppercase;
-        font-size: var(--fs-heading-xl);
+        font-size: 3rem;
         letter-spacing: 0.05em;
+      }
+
+      @include bp-desktop {
+        text-transform: none;
+        font-size: 5.5rem;
+        letter-spacing: 0;
+        gap: 3.5625rem;
       }
     }
   }
@@ -36,5 +43,9 @@
   @include bp-tablet {
     padding: 4rem 2.5rem;
     gap: 3rem;
+  }
+
+  @include bp-tablet {
+    padding: 3.75rem 7rem;
   }
 }

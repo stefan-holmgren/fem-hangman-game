@@ -49,19 +49,6 @@ canvas {
 }
 
 :root {
-  --fs-heading-s: 1.5rem;
-  --fs-heading-m: 2rem;
-  --fs-heading-l: 2.5rem;
-  --fs-heading-xl: 3rem;
-  --fs-heading-2xl: 4rem;
-  --fs-heading-3xl: 5.5rem;
-  --fs-heading-4xl: 5.875rem;
-  --fs-heading-5xl: 6.5rem;
-  --fs-heading-6xl: 8.375rem;
-
-  --fs-body-m: 1rem;
-  --fs-body-l: 1.25rem;
-
   --anim-duration: 0.3s;
 }
 
@@ -72,5 +59,9 @@ body {
 
   @include bp-tablet {
     background-image: url("/assets/images/background-tablet.svg");
+  }
+
+  @include bp-desktop {
+    background-image: url("/assets/images/background-desktop.svg");
   }
 }

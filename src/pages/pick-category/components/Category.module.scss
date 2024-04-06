@@ -3,7 +3,7 @@
 .category {
   --border-radius: 1.25rem;
   display: block;
-  font-size: var(--fs-heading-m);
+  font-size: 2rem;
   text-align: center;
   line-height: 1.2;
   letter-spacing: 0.05em;
@@ -11,7 +11,7 @@
   padding: 1.5rem 4rem;
 
   @include bp-tablet {
-    font-size: var(--fs-heading-xl);
+    font-size: 3rem;
     aspect-ratio: 1.77;
     padding: 2rem 5rem;
     display: grid;

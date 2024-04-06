@@ -8,12 +8,11 @@
 
   .header {
     --outline-size: 1rem;
-    font-size: var(--fs-heading-4xl);
+    font-size: 5.875rem;
     letter-spacing: -0.005em;
 
     @include bp-tablet {
-      --outline-size: 1rem;
-      font-size: var(--fs-heading-6xl);
+      font-size: 8.375rem;
     }
   }
 

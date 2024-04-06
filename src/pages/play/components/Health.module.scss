@@ -26,6 +26,12 @@
       height: 2rem;
       padding: 0.5rem 0.75rem;
     }
+
+    @include bp-desktop {
+      width: 15rem;
+      height: 2rem;
+      padding: 0.5rem 0.75rem;
+    }
   }
 
   img {
@@ -33,6 +39,10 @@
 
     @include bp-tablet {
       height: 3rem;
+    }
+
+    @include bp-desktop {
+      height: 3.125rem;
     }
   }
 
