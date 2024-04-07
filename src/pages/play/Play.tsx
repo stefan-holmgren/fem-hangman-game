@@ -6,7 +6,7 @@ import MenuButton from "@/components/MenuButton";
 import Health from "./components/Health";
 import Letters from "./components/Letters";
 import PauseMenuModal from "./components/PauseMenuModal";
-import GameEndMenuModal from "./components/GameEndMenuModal";
+import GameEndMenuModal, { GameEndMenuModalRef } from "./components/GameEndMenuModal";
 import { createMemo, createSignal, onMount } from "solid-js";
 import SecretText from "./components/SecretText";
 
@@ -21,7 +21,6 @@ export default function Play() {
   const selectedCategoryKey = Object.keys(categories).find(
     (c) => c.toLowerCase() === selectedCategory
   ) as keyof typeof categories;
-  const [gameEndTitle, setGameEndTitle] = createSignal("You Win");
   const [selectedText, setSelectedText] = createSignal("");
   const [guessedLetters, setGuessedLetters] = createSignal<string[]>([]);
   const [remainingLetters, setRemainingLetters] = createSignal<Set<string>>(new Set());
@@ -30,7 +29,7 @@ export default function Play() {
   const healthPercentage = createMemo(() => (health() / MAX_HEALTH) * 100);
 
   let pauseMenuModalRef: HTMLDialogElement | undefined;
-  let gameEndMenuModalRef: HTMLDialogElement | undefined;
+  let gameEndMenuModalRef: GameEndMenuModalRef | undefined;
 
   if (!selectedCategoryKey) {
     navigate("/");
@@ -60,13 +59,11 @@ export default function Play() {
   };
 
   const winGame = () => {
-    setGameEndTitle("You Win");
-    gameEndMenuModalRef?.showModal();
+    gameEndMenuModalRef?.showModal({ title: "You Win" });
   };
 
   const loseGame = () => {
-    setGameEndTitle("You Lose");
-    gameEndMenuModalRef?.showModal();
+    gameEndMenuModalRef?.showModal({ title: "You Lose" });
   };
 
   const wrongGuess = () => {
@@ -116,7 +113,6 @@ export default function Play() {
       <PauseMenuModal ref={(el) => (pauseMenuModalRef = el)} />
       <GameEndMenuModal
         ref={(el) => (gameEndMenuModalRef = el)}
-        title={gameEndTitle()}
         playAgainEnabled={getRemainingTexts().length > 0}
         onPlayAgain={() => startGame()}
       />
