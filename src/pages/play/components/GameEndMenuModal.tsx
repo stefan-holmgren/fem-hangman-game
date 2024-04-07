@@ -5,7 +5,7 @@ import PickCategoryButton from "./PickCategoryButton";
 import { ComponentProps } from "solid-js";
 import GameModalClose from "./GameModalClose";
 
-type GameEndMenuModalProps = Pick<ComponentProps<typeof GameModal>, "open" | "onClose" | "title"> & {
+type GameEndMenuModalProps = Pick<ComponentProps<typeof GameModal>, "title" | "ref"> & {
   onPlayAgain: () => void;
   playAgainEnabled: boolean;
 };

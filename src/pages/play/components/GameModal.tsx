@@ -1,5 +1,4 @@
-import { For, JSX, Show, createContext } from "solid-js";
-import Backdrop from "../../../components/Backdrop";
+import { For, JSX, createContext, onMount } from "solid-js";
 import style from "./GameModal.module.scss";
 import Modal from "../../../components/Modal";
 import ModalHeader from "../../../components/ModalHeader";
@@ -8,27 +7,34 @@ import OutlinedHeader from "../../../components/OutlinedHeader";
 export const GameModalContext = createContext({ close: () => {} });
 
 type GameModalProps = {
+  ref?: (el: HTMLDialogElement) => void;
   title: string;
-  open: boolean;
-  onClose: () => void;
   buttons: JSX.Element[];
 };
 
 export default function GameModal(props: GameModalProps) {
+  let modalRef: HTMLDialogElement | undefined;
+
+  onMount(() => {
+    console.log("modalRef", modalRef);
+  });
+
   return (
-    <GameModalContext.Provider value={{ close: () => props.onClose() }}>
-      <Show when={props.open}>
-        <Backdrop class={style["game-modal"]}>
-          <Modal>
-            <ModalHeader>
-              <OutlinedHeader class={style.header} label={props.title} />
-            </ModalHeader>
-            <ul class={style["menu"]}>
-              <For each={props.buttons}>{(component) => <li>{component}</li>}</For>
-            </ul>
-          </Modal>
-        </Backdrop>
-      </Show>
+    <GameModalContext.Provider value={{ close: () => modalRef?.close() }}>
+      <Modal
+        ref={(el) => {
+          modalRef = el;
+          props.ref?.(el);
+        }}
+        class={style["game-modal"]}
+      >
+        <ModalHeader>
+          <OutlinedHeader class={style.header} label={props.title} />
+        </ModalHeader>
+        <ul class={style["menu"]}>
+          <For each={props.buttons}>{(component) => <li>{component}</li>}</For>
+        </ul>
+      </Modal>
     </GameModalContext.Provider>
   );
 }

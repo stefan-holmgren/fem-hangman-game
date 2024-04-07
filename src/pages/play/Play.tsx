@@ -21,8 +21,6 @@ export default function Play() {
   const selectedCategoryKey = Object.keys(categories).find(
     (c) => c.toLowerCase() === selectedCategory
   ) as keyof typeof categories;
-  const [pauseMenuOpen, setPauseMenuOpen] = createSignal(false);
-  const [gameEndMenuOpen, setGameEndMenuOpen] = createSignal(false);
   const [gameEndTitle, setGameEndTitle] = createSignal("You Win");
   const [selectedText, setSelectedText] = createSignal("");
   const [guessedLetters, setGuessedLetters] = createSignal<string[]>([]);
@@ -30,6 +28,9 @@ export default function Play() {
   const [health, setHealth] = createSignal(MAX_HEALTH);
 
   const healthPercentage = createMemo(() => (health() / MAX_HEALTH) * 100);
+
+  let pauseMenuModalRef: HTMLDialogElement | undefined;
+  let gameEndMenuModalRef: HTMLDialogElement | undefined;
 
   if (!selectedCategoryKey) {
     navigate("/");
@@ -60,12 +61,12 @@ export default function Play() {
 
   const winGame = () => {
     setGameEndTitle("You Win");
-    setGameEndMenuOpen(true);
+    gameEndMenuModalRef?.showModal();
   };
 
   const loseGame = () => {
     setGameEndTitle("You Lose");
-    setGameEndMenuOpen(true);
+    gameEndMenuModalRef?.showModal();
   };
 
   const wrongGuess = () => {
@@ -99,7 +100,12 @@ export default function Play() {
       <Backdrop class={style.play}>
         <header>
           <div class={style.category}>
-            <MenuButton onClick={() => setPauseMenuOpen(true)} />
+            <MenuButton
+              onClick={() => {
+                console.log("PauseMenuModalRef", pauseMenuModalRef);
+                pauseMenuModalRef?.showModal();
+              }}
+            />
             <span>{selectedCategoryKey}</span>
           </div>
           <Health percentage={healthPercentage()} />
@@ -107,10 +113,9 @@ export default function Play() {
         <SecretText secretText={selectedText()} guessedLetters={guessedLetters()} />
         <Letters selectedLetters={guessedLetters()} onLetterClicked={guess} />
       </Backdrop>
-      <PauseMenuModal open={pauseMenuOpen()} onClose={() => setPauseMenuOpen(false)} />
+      <PauseMenuModal ref={(el) => (pauseMenuModalRef = el)} />
       <GameEndMenuModal
-        open={gameEndMenuOpen()}
-        onClose={() => setGameEndMenuOpen(false)}
+        ref={(el) => (gameEndMenuModalRef = el)}
         title={gameEndTitle()}
         playAgainEnabled={getRemainingTexts().length > 0}
         onPlayAgain={() => startGame()}

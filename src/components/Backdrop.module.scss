@@ -1,9 +1,5 @@
+@import "@/mixins.scss";
+
 .backdrop {
-  min-height: 100vh;
-  background: linear-gradient(
-    to bottom,
-    hsla(270, 82%, 14%, 0.75) 0%,
-    hsla(240, 66%, 29%, 0.75) 75%,
-    hsla(251, 65%, 29%, 0.75) 100%
-  );
+  @include bg-backdrop;
 }
