@@ -1,20 +1,36 @@
 import style from "./SecretWord.module.scss";
-import { createEffect, createMemo, createSignal, onCleanup, onMount } from "solid-js";
+import { Accessor, For, Setter, createEffect, createSignal, onCleanup, onMount } from "solid-js";
 
 type SecretWordProps = {
   word: string;
   guessedLetters: string[];
 };
 
+type SecretLetter = {
+  letter: string;
+  guessed: Accessor<boolean>;
+  setGuessed: Setter<boolean>;
+};
+
+const createSecretLetter = (letter: string): SecretLetter => {
+  const [guessed, setGuessed] = createSignal(false);
+  return { letter, guessed, setGuessed };
+};
+
 export default function SecretWord(props: SecretWordProps) {
-  const lowerCaseGuessedLetters = createMemo(() => props.guessedLetters.map((letter) => letter.toLowerCase()));
-  let letterRefs: HTMLSpanElement[] = [];
+  const [secretLetters] = createSignal(props.word.toUpperCase().split("").map(createSecretLetter));
   const [breaks, setBreaks] = createSignal<number[]>([]);
 
-  const isLetterGuessed = (letter: string) => {
-    return lowerCaseGuessedLetters().includes(letter.toLowerCase());
-  };
+  createEffect(() => {
+    for (const guessedLetter of props.guessedLetters) {
+      const secretLetter = secretLetters().find((letter) => letter.letter === guessedLetter);
+      if (secretLetter) {
+        secretLetter.setGuessed(true);
+      }
+    }
+  });
 
+  let letterRefs: HTMLSpanElement[] = [];
   const updateBreaks = () => {
     const newBreaks: number[] = [];
     letterRefs.forEach((el, index) => {
@@ -40,22 +56,21 @@ export default function SecretWord(props: SecretWordProps) {
   });
 
   return (
-    <>
-      {props.word.split("").map((letter, index) => {
-        const guessed = isLetterGuessed(letter);
+    <For each={secretLetters()}>
+      {(letter, index) => {
         return (
-          <span classList={{ [style.break]: breaks().includes(index) }} ref={(el) => letterRefs.push(el)}>
+          <span classList={{ [style.break]: breaks().includes(index()) }} ref={(el) => letterRefs.push(el)}>
             <span
               classList={{
                 [style.letter]: true,
-                [style.guessed]: guessed,
+                [style.guessed]: letter.guessed(),
               }}
             >
-              {guessed ? letter : "_"}
+              {letter.guessed() ? letter.letter : "_"}
             </span>
           </span>
         );
-      })}
-    </>
+      }}
+    </For>
   );
 }
