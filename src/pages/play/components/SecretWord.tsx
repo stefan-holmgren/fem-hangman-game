@@ -55,7 +55,10 @@ export default function SecretWord(props: SecretWordProps) {
     <For each={secretLetters()}>
       {(letter, index) => {
         return (
-          <span classList={{ [style.break]: breaks().includes(index()) }} ref={(el) => letterRefs.push(el)}>
+          <span
+            classList={{ [style["letter-container"]]: true, [style.break]: breaks().includes(index()) }}
+            ref={(el) => letterRefs.push(el)}
+          >
             <span
               classList={{
                 [style.letter]: true,
