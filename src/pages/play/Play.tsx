@@ -7,7 +7,7 @@ import Health from "./components/Health";
 import Letters from "./components/Letters";
 import PauseMenuModal from "./components/PauseMenuModal";
 import GameEndMenuModal, { GameEndMenuModalRef } from "./components/GameEndMenuModal";
-import { createMemo, createSignal, onMount } from "solid-js";
+import { createMemo, createSignal, onCleanup, onMount } from "solid-js";
 import SecretText from "./components/SecretText";
 
 // The max health (turns) the player has to guess the word(s)
@@ -26,8 +26,6 @@ export default function Play() {
   const [remainingLetters, setRemainingLetters] = createSignal<Set<string>>(new Set());
   const [health, setHealth] = createSignal(MAX_HEALTH);
 
-  const healthPercentage = createMemo(() => (health() / MAX_HEALTH) * 100);
-
   let pauseMenuModalRef: HTMLDialogElement | undefined;
   let gameEndMenuModalRef: GameEndMenuModalRef | undefined;
 
@@ -35,6 +33,9 @@ export default function Play() {
     navigate("/");
     return;
   }
+
+  const healthPercentage = createMemo(() => (health() / MAX_HEALTH) * 100);
+  const isDialogOpen = () => pauseMenuModalRef?.open || gameEndMenuModalRef?.el()?.open;
 
   const getRemainingTexts = () => categories[selectedCategoryKey].filter((text) => !text.selected);
   const getRandomText = () => getRemainingTexts()[Math.floor(Math.random() * getRemainingTexts().length)];
@@ -90,7 +91,35 @@ export default function Play() {
     goodGuess(letter);
   };
 
-  onMount(startGame);
+  const onKeyDown = (e: KeyboardEvent) => {
+    if (isDialogOpen()) {
+      return;
+    }
+
+    if (e.key === "Escape") {
+      pauseMenuModalRef?.showModal();
+      e.preventDefault();
+      return;
+    }
+
+    const key = e.key.toUpperCase();
+
+    if (guessedLetters().includes(key)) {
+      return;
+    }
+    if (key.match(/^[A-Z]$/)) {
+      guess(key);
+    }
+  };
+
+  onMount(() => {
+    startGame();
+    document.addEventListener("keydown", onKeyDown);
+  });
+
+  onCleanup(() => {
+    document.removeEventListener("keydown", onKeyDown);
+  });
 
   return (
     <>
@@ -99,7 +128,6 @@ export default function Play() {
           <div class={style.category}>
             <MenuButton
               onClick={() => {
-                console.log("PauseMenuModalRef", pauseMenuModalRef);
                 pauseMenuModalRef?.showModal();
               }}
             />

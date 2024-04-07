@@ -15,13 +15,10 @@ type GameModalProps = {
 export default function GameModal(props: GameModalProps) {
   let modalRef: HTMLDialogElement | undefined;
 
-  onMount(() => {
-    console.log("modalRef", modalRef);
-  });
-
   return (
     <GameModalContext.Provider value={{ close: () => modalRef?.close() }}>
       <Modal
+        cancellabe={false}
         ref={(el) => {
           modalRef = el;
           props.ref?.(el);

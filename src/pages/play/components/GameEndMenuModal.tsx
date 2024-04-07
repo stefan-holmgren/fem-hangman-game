@@ -3,9 +3,10 @@ import GameModal from "@/pages/play/components/GameModal";
 import QuitButton from "./QuitButton";
 import PickCategoryButton from "./PickCategoryButton";
 import GameModalClose from "./GameModalClose";
-import { createSignal, onMount } from "solid-js";
+import { Accessor, createSignal, onMount } from "solid-js";
 
 export type GameEndMenuModalRef = {
+  el: Accessor<HTMLDialogElement | undefined>;
   showModal: (props: { title: string }) => void;
 };
 
@@ -20,6 +21,7 @@ export default function GameEndMenuModal(props: GameEndMenuModalProps) {
   const [title, setTitle] = createSignal("");
 
   const gameEndMenuModalRef: GameEndMenuModalRef = {
+    el: ref,
     showModal: (props) => {
       setTitle(props.title);
       ref()?.showModal();
@@ -36,7 +38,7 @@ export default function GameEndMenuModal(props: GameEndMenuModalProps) {
       title={title()}
       buttons={[
         <GameModalClose>
-          <Button disabled={!props.playAgainEnabled} onClick={() => props.onPlayAgain()}>
+          <Button autofocus disabled={!props.playAgainEnabled} onClick={() => props.onPlayAgain()}>
             Play again!
           </Button>
         </GameModalClose>,
