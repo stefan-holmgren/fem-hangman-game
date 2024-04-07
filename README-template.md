@@ -14,8 +14,6 @@ This is a solution to the [Hangman game challenge on Frontend Mentor](https://ww
 - [Usage](#usage)
 - [Author](#author)
 
-**Note: Delete this note and update the table of contents based on what sections you keep.**
-
 ## Overview
 
 ### The challenge
@@ -56,39 +54,15 @@ Users should be able to:
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+Decided to use Solid.js for this project to learn more about it. It was a good experience and I will probably use it again in the future.
 
-To see how you can add code snippets, see below:
-
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
-
-```css
-.proud-of-this-css {
-  color: papayawhip;
-}
-```
-
-```js
-const proudOfThisFunc = () => {
-  console.log("🎉");
-};
-```
-
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
-
-**Note: Delete this note and the content within this section and replace with your own learnings.**
+Also went and tried using SASS for styling, and modular CSS. Also interesting.
 
 ## Usage
 
 ```bash
-$ npm install
+$ npm ci
 ```
-
-### Learn more on the [Solid Website](https://solidjs.com) and come chat with us on our [Discord](https://discord.com/invite/solidjs)
-
-## Available Scripts
 
 In the project directory, you can run:
 
@@ -96,14 +70,6 @@ In the project directory, you can run:
 
 Runs the app in the development mode.<br>
 Open http://localhost:5173/fem-hangman-game to view it in the browser.
-
-### `npm run build`
-
-Builds the app for production to the `dist` folder.<br>
-It correctly bundles Solid in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
 
 ## Author
 
