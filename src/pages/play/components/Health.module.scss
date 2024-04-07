@@ -13,8 +13,8 @@
     padding: 0.25rem;
 
     .health-bar-fill {
+      transition: width var(--anim-duration);
       height: 100%;
-      width: 50%;
       background-color: #261676;
       border-radius: 100vw;
       height: 100%;
