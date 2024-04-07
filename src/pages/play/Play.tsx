@@ -38,8 +38,7 @@ export default function Play() {
   const isDialogOpen = () => pauseMenuModalRef?.open || gameEndMenuModalRef?.el()?.open;
 
   const getRemainingTexts = () => categories[selectedCategoryKey].filter((text) => !text.selected);
-  // const getRandomText = () => getRemainingTexts()[Math.floor(Math.random() * getRemainingTexts().length)];
-  const getRandomText = () => ({ name: "Hello World", selected: false });
+  const getRandomText = () => getRemainingTexts()[Math.floor(Math.random() * getRemainingTexts().length)];
 
   const deconstructText = (text: string) =>
     new Set(
