@@ -25,8 +25,6 @@
 
   .popup {
     padding-top: 12rem;
-    margin-top: 4rem;
-
     @include bp-tablet {
       padding-top: 13rem;
       max-width: 40rem;

@@ -15,7 +15,7 @@ export default function PauseMenuModal(props: PauseMenuModalProps) {
       title="Paused"
       buttons={[
         <GameModalClose>
-          <Button autofocus>Continue</Button>
+          <Button>Continue</Button>
         </GameModalClose>,
         <PickCategoryButton />,
         <QuitButton />,

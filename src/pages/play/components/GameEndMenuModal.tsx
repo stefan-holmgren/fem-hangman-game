@@ -36,9 +36,10 @@ export default function GameEndMenuModal(props: GameEndMenuModalProps) {
     <GameModal
       ref={setRef}
       title={title()}
+      cancellable={false}
       buttons={[
         <GameModalClose>
-          <Button autofocus disabled={!props.playAgainEnabled} onClick={() => props.onPlayAgain()}>
+          <Button disabled={!props.playAgainEnabled} onClick={() => props.onPlayAgain()}>
             Play again!
           </Button>
         </GameModalClose>,

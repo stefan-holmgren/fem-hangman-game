@@ -48,6 +48,10 @@ canvas {
   src: url("/assets/fonts/MouseMemoirs-Regular.ttf") format("truetype");
 }
 
+* {
+  outline: none;
+}
+
 :root {
   --anim-duration: 0.3s;
 }

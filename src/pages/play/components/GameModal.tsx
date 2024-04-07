@@ -1,4 +1,4 @@
-import { For, JSX, createContext, onMount } from "solid-js";
+import { For, JSX, createContext } from "solid-js";
 import style from "./GameModal.module.scss";
 import Modal from "../../../components/Modal";
 import ModalHeader from "../../../components/ModalHeader";
@@ -8,6 +8,7 @@ export const GameModalContext = createContext({ close: () => {} });
 
 type GameModalProps = {
   ref?: (el: HTMLDialogElement) => void;
+  cancellable?: boolean;
   title: string;
   buttons: JSX.Element[];
 };
@@ -18,7 +19,7 @@ export default function GameModal(props: GameModalProps) {
   return (
     <GameModalContext.Provider value={{ close: () => modalRef?.close() }}>
       <Modal
-        cancellabe={false}
+        cancellabe={props.cancellable}
         ref={(el) => {
           modalRef = el;
           props.ref?.(el);

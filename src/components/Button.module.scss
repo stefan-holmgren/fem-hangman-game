@@ -33,7 +33,8 @@
     transition: opacity var(--anim-duration);
   }
 
-  &:hover::after {
+  &:hover::after,
+  &:focus::after {
     opacity: 1;
   }
 

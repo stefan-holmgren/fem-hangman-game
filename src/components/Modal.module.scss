@@ -9,7 +9,6 @@
   background: none;
   place-self: center;
   height: max-content;
-  overflow: hidden;
 
   &::before {
     position: absolute;
@@ -34,7 +33,6 @@
 
   @include bp-tablet {
     border-radius: 4.5rem;
-    top: 5rem;
     max-width: 37rem;
     padding-top: 11.75rem;
   }

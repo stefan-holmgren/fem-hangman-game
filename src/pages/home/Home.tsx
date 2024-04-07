@@ -4,11 +4,18 @@ import PlayButton from "@/components/PlayButton";
 import Modal from "@/components/Modal";
 import ModalHeader from "@/components/ModalHeader";
 import ButtonLink from "@/components/ButtonLink";
+import { onMount } from "solid-js";
 
 export default function Home() {
+  let modalRef: HTMLDialogElement | undefined;
+
+  onMount(() => {
+    modalRef?.show();
+  });
+
   return (
     <main class={style.main}>
-      <Modal class={style.popup}>
+      <Modal ref={modalRef} class={style.popup} cancellabe={false}>
         <ModalHeader>
           <img class={style.logo} src={logo} alt="The Hangman Game" />
         </ModalHeader>
