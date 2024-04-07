@@ -1,5 +1,5 @@
 import style from "./SecretText.module.scss";
-import { createMemo } from "solid-js";
+import { For, createMemo } from "solid-js";
 import SecretWord from "./SecretWord";
 
 type SecretTextProps = {
@@ -13,13 +13,15 @@ export default function SecretText(props: SecretTextProps) {
 
   return (
     <ul class={`${style["secret-text"]} ${props.class}`}>
-      {words().map((word) => {
-        return (
-          <li>
-            <SecretWord word={word} guessedLetters={props.guessedLetters} />
-          </li>
-        );
-      })}
+      <For each={words()}>
+        {(word) => {
+          return (
+            <li>
+              <SecretWord word={word} guessedLetters={props.guessedLetters} />
+            </li>
+          );
+        }}
+      </For>
     </ul>
   );
 }
