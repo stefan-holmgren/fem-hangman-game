@@ -27,7 +27,7 @@
 
     line-height: 1.5;
 
-    transition: all var(--anim-duration);
+    transition: opacity var(--anim-duration);
 
     &:disabled {
       cursor: not-allowed;
