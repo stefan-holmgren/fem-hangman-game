@@ -9,6 +9,7 @@ import PauseMenuModal from "./components/PauseMenuModal";
 import GameEndMenuModal, { GameEndMenuModalRef } from "./components/GameEndMenuModal";
 import { createMemo, createSignal, onCleanup, onMount } from "solid-js";
 import SecretText from "./components/SecretText";
+import { extractUniqueCharacters } from "@/utils/extractUniqueCharacters";
 
 // The max health (turns) the player has to guess the word(s)
 const MAX_HEALTH = 8;
@@ -21,6 +22,12 @@ export default function Play() {
   const selectedCategoryKey = Object.keys(categories).find(
     (c) => c.toLowerCase() === selectedCategory
   ) as keyof typeof categories;
+
+  if (!selectedCategoryKey) {
+    navigate("/");
+    return;
+  }
+
   const [selectedText, setSelectedText] = createSignal("");
   const [guessedLetters, setGuessedLetters] = createSignal<string[]>([]);
   const [remainingLetters, setRemainingLetters] = createSignal<Set<string>>(new Set());
@@ -29,24 +36,10 @@ export default function Play() {
   let pauseMenuModalRef: HTMLDialogElement | undefined;
   let gameEndMenuModalRef: GameEndMenuModalRef | undefined;
 
-  if (!selectedCategoryKey) {
-    navigate("/");
-    return;
-  }
-
   const healthPercentage = createMemo(() => (health() / MAX_HEALTH) * 100);
   const isDialogOpen = () => pauseMenuModalRef?.open || gameEndMenuModalRef?.el()?.open;
-
   const getRemainingTexts = () => categories[selectedCategoryKey].filter((text) => !text.selected);
   const getRandomText = () => getRemainingTexts()[Math.floor(Math.random() * getRemainingTexts().length)];
-
-  const deconstructText = (text: string) =>
-    new Set(
-      text
-        .toUpperCase()
-        .split("")
-        .filter((char) => char !== " ")
-    );
 
   const startGame = () => {
     setHealth(MAX_HEALTH);
@@ -55,22 +48,18 @@ export default function Play() {
     if (randomText) {
       randomText.selected = true;
       setSelectedText(randomText.name);
-      setRemainingLetters(deconstructText(randomText.name));
+      setRemainingLetters(extractUniqueCharacters(randomText.name));
     }
   };
 
-  const winGame = () => {
-    gameEndMenuModalRef?.showModal({ title: "You Win" });
-  };
-
-  const loseGame = () => {
-    gameEndMenuModalRef?.showModal({ title: "You Lose" });
+  const endGame = (title: string) => {
+    gameEndMenuModalRef?.showModal({ title });
   };
 
   const wrongGuess = () => {
     setHealth(health() - 1);
     if (health() <= 0) {
-      loseGame();
+      endGame("You Lose");
     }
   };
 
@@ -78,7 +67,7 @@ export default function Play() {
     remainingLetters().delete(letter);
     setRemainingLetters(new Set(remainingLetters()));
     if (remainingLetters().size === 0) {
-      winGame();
+      endGame("You Win");
     }
   };
 
@@ -135,7 +124,7 @@ export default function Play() {
           </div>
           <Health percentage={healthPercentage()} />
         </header>
-        <SecretText secretText={selectedText()} guessedLetters={guessedLetters()} />
+        <SecretText class={style["secret-text"]} secretText={selectedText()} guessedLetters={guessedLetters()} />
         <Letters selectedLetters={guessedLetters()} onLetterClicked={guess} />
       </Backdrop>
       <PauseMenuModal ref={(el) => (pauseMenuModalRef = el)} />

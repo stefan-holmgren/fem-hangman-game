@@ -2,9 +2,8 @@
 
 .play {
   padding: 3rem 1.5rem;
-  display: grid;
-  grid-template-columns: 100%;
-  grid-template-rows: 0fr 1fr auto;
+  display: flex;
+  flex-direction: column;
   gap: 2rem;
   max-height: 100vh;
   max-height: 100svh;
@@ -48,4 +47,9 @@
   @include bp-desktop {
     padding: 3.75rem 7rem;
   }
+}
+
+.secret-text {
+  flex-grow: 1;
+  overflow: hidden;
 }
