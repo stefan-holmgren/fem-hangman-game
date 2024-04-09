@@ -1,4 +1,4 @@
-import { For, JSX, createContext } from "solid-js";
+import { For, JSX, createContext, onCleanup, onMount } from "solid-js";
 import style from "./GameModal.module.scss";
 import Modal from "../../../components/Modal";
 import ModalHeader from "../../../components/ModalHeader";
@@ -15,6 +15,42 @@ type GameModalProps = {
 
 export default function GameModal(props: GameModalProps) {
   let modalRef: HTMLDialogElement | undefined;
+  const liRefs: HTMLLIElement[] = [];
+
+  const onKeyDown = (e: KeyboardEvent) => {
+    if (!modalRef || !liRefs.length || !modalRef.contains(document.activeElement)) {
+      return;
+    }
+
+    let liIndex = liRefs.findIndex((li) => li.contains(document.activeElement));
+    if (liIndex === -1) {
+      return;
+    }
+    switch (e.key) {
+      case "ArrowDown":
+        liIndex++;
+        break;
+      case "ArrowUp":
+        liIndex--;
+    }
+
+    const newLiRef = liRefs[liIndex];
+
+    if (newLiRef) {
+      const focusableElement = newLiRef.querySelector("button, [href]") as HTMLElement;
+      focusableElement?.focus();
+    }
+
+    (liRefs[liIndex]?.firstElementChild as HTMLElement)?.focus();
+  };
+
+  onMount(() => {
+    document.addEventListener("keydown", onKeyDown);
+  });
+
+  onCleanup(() => {
+    document.removeEventListener("keydown", onKeyDown);
+  });
 
   return (
     <GameModalContext.Provider value={{ close: () => modalRef?.close() }}>
@@ -30,7 +66,7 @@ export default function GameModal(props: GameModalProps) {
           <OutlinedHeader class={style.header} label={props.title} />
         </ModalHeader>
         <ul class={style["menu"]}>
-          <For each={props.buttons}>{(component) => <li>{component}</li>}</For>
+          <For each={props.buttons}>{(component) => <li ref={(el) => liRefs.push(el)}>{component}</li>}</For>
         </ul>
       </Modal>
     </GameModalContext.Provider>
