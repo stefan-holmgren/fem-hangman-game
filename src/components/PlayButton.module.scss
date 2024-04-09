@@ -27,9 +27,11 @@
     z-index: -1;
   }
 
-  &:hover::after,
-  &:focus::after {
-    opacity: 1;
+  @media (hover: hover) {
+    &:hover::after,
+    &:focus::after {
+      opacity: 1;
+    }
   }
 
   img {

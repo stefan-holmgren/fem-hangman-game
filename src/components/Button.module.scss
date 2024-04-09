@@ -33,9 +33,11 @@
     transition: opacity var(--anim-duration);
   }
 
-  &:hover::after,
-  &:focus::after {
-    opacity: 1;
+  @media (hover: hover) {
+    &:hover::after,
+    &:focus::after {
+      opacity: 1;
+    }
   }
 
   &:disabled {

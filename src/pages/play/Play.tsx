@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "@solidjs/router";
 import data from "@/assets/data.json";
 import MenuButton from "@/components/MenuButton";
 import Health from "./components/Health";
-import Letters from "./components/Letters";
+import Letters, { LettersRef } from "./components/Letters";
 import PauseMenuModal from "./components/PauseMenuModal";
 import GameEndMenuModal, { GameEndMenuModalRef } from "./components/GameEndMenuModal";
 import { createMemo, createSignal, onCleanup, onMount } from "solid-js";
@@ -35,6 +35,7 @@ export default function Play() {
 
   let pauseMenuModalRef: HTMLDialogElement | undefined;
   let gameEndMenuModalRef: GameEndMenuModalRef | undefined;
+  let lettersRef: LettersRef | undefined;
 
   const healthPercentage = createMemo(() => (health() / MAX_HEALTH) * 100);
   const isDialogOpen = () => pauseMenuModalRef?.open || gameEndMenuModalRef?.el()?.open;
@@ -50,6 +51,8 @@ export default function Play() {
       setSelectedText(randomText.name);
       setRemainingLetters(extractUniqueCharacters(randomText.name));
     }
+
+    lettersRef?.focus();
   };
 
   const endGame = (title: string) => {
@@ -125,7 +128,7 @@ export default function Play() {
           <Health percentage={healthPercentage()} />
         </header>
         <SecretText class={style["secret-text"]} secretText={selectedText()} guessedLetters={guessedLetters()} />
-        <Letters selectedLetters={guessedLetters()} onLetterClicked={guess} />
+        <Letters ref={(ref) => (lettersRef = ref)} selectedLetters={guessedLetters()} onLetterClicked={guess} />
       </Backdrop>
       <PauseMenuModal ref={(el) => (pauseMenuModalRef = el)} />
       <GameEndMenuModal

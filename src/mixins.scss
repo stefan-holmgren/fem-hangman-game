@@ -12,6 +12,7 @@
 
 @mixin bg-backdrop {
   min-height: 100vh;
+  min-height: 100svh;
   background: linear-gradient(
     to bottom,
     hsla(270, 82%, 14%, 0.75) 0%,

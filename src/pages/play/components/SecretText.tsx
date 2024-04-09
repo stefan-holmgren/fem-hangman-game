@@ -26,7 +26,6 @@ export default function SecretText(props: SecretTextProps) {
       secretTextRef.style.setProperty("--scale-factor", "1");
       const scaleFactorStep = 0.1;
       while (secretTextRef.scrollHeight > secretTextRef.clientHeight) {
-        console.log("resize to factor " + scaleFactor);
         scaleFactor -= scaleFactorStep;
         secretTextRef.style.setProperty("--scale-factor", scaleFactor.toString());
       }

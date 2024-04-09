@@ -29,15 +29,17 @@
 
     transition: opacity var(--anim-duration);
 
-    &:disabled {
+    &.disabled {
       cursor: not-allowed;
       opacity: 0.25;
     }
 
-    &:hover:not(:disabled),
-    &:focus:not(:disabled) {
-      background: #2463ff;
-      color: white;
+    @media (hover: hover) {
+      &:focus,
+      &:hover {
+        background: #2463ff;
+        color: white;
+      }
     }
 
     @include bp-tablet {

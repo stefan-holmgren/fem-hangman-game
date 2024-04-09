@@ -59,6 +59,7 @@ canvas {
 body {
   font-family: "Mouse Memoirs", sans-serif;
   min-height: 100vh;
+  min-height: 100svh;
   background: url("/assets/images/background-mobile.svg") no-repeat center center / cover;
 
   @include bp-tablet {
