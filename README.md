@@ -60,6 +60,41 @@ Also went and tried using SASS for styling, and modular CSS. Also interesting.
 
 The hardest part, which took me the longest, was to figure out how to have the secret text adapt to its confines. Was searching the web for all kinds of CSS only solutions, but totally failed in the end. So I decided to use a `scale-factor` css variable that shrank the text until they fit (according to javascript). The easiest way to see if the content fit its container was to check if `scrollHeight` was larger than `clientHeight` and if so, scale it down a bit. And then keep doing this until it fit. Not the most elegant solution, but it works.
 
+The next hardest part was to make the game controllable from keyboard:
+
+- **Home page**
+
+  - Arrow keys for traversing the menu.
+  - Enter or space to activate the selected menu item.
+
+- **How to play**
+
+  - Escape to go back to home page
+
+- **Pick category**
+
+  - Arrow keys to traverse the categories.
+  - Escape to go back to home page
+
+- **Game**
+
+  - Escape to pause the game.
+  - Keyboard alphabet to select a letter.
+  - Arrow keys to traverse the alphabet.
+  - Enter or space to select a letter.
+  - Escape to go back to home page
+
+- **Pause menu**
+
+  - Arrow keys to traverse the menu.
+  - Enter or space to activate the selected menu item.
+
+- **Win/lose screen**
+  - Arrow keys to traverse the menu.
+  - Enter or space to activate the selected menu item.
+
+Some of the content can be too large in the "how to play" page, and "pick category" pages. So I made the page scrollable.
+
 ## Usage
 
 ```bash
