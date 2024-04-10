@@ -1,12 +1,13 @@
 @import "@/mixins.scss";
 
 .tutorial {
-  margin: 5rem auto 0;
+  margin: 3rem auto 0;
   max-width: 21rem;
   display: grid;
   gap: 1.5rem;
 
   @include bp-tablet {
+    margin-top: 5rem;
     max-width: 42.5rem;
     gap: 2rem;
   }

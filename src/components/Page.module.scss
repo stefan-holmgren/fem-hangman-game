@@ -1,7 +1,15 @@
 @import "@/mixins.scss";
 
 .page {
-  padding: 2rem 1.5rem 3.75rem;
+  padding: 2rem 1.5rem;
+
+  max-height: 100vh;
+  max-height: 100svh;
+  overflow-y: auto;
+
+  display: flex;
+
+  flex-direction: column;
 
   background: linear-gradient(
     to bottom,
@@ -11,10 +19,46 @@
   );
 
   @include bp-tablet {
-    padding: 3.75rem 2.5rem 6rem;
+    padding: 3.75rem 2.5rem;
   }
 
   @include bp-desktop {
-    padding: 5rem 7rem 10rem;
+    padding: 5rem 7rem;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    height: 8rem;
+
+    background: linear-gradient(
+      to bottom,
+      hsla(270, 82%, 14%, 1) 0%,
+      hsla(240, 82%, 14%, 0.5) 75%,
+      hsla(251, 65%, 29%, 0) 100%
+    );
+
+    opacity: 0;
+    transition: opacity var(--anim-duration);
+
+    @include bp-tablet {
+      height: 15rem;
+    }
+
+    @include bp-desktop {
+      height: 20rem;
+    }
+  }
+
+  &.scrolling::after {
+    opacity: 1;
+  }
+
+  .page-content {
+    flex: 1;
+    display: grid;
+    place-items: center;
   }
 }

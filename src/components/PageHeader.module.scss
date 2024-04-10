@@ -1,10 +1,17 @@
 @import "@/mixins.scss";
 
 .page-header {
-  position: relative;
+  position: sticky;
+  top: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 2rem;
+  z-index: 1;
+
+  .back-button {
+    flex-shrink: 0;
+  }
 
   @include bp-tablet {
     justify-content: center;

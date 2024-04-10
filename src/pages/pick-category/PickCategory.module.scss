@@ -2,10 +2,12 @@
 
 .categories {
   --columns: 1;
-  margin: 6.25rem auto 3rem;
+  --scale-factor: 1;
+  margin: 3rem auto 3rem;
   max-width: 21rem;
   display: grid;
   gap: 1rem;
+  width: 100%;
 
   @include bp-tablet {
     --columns: 2;

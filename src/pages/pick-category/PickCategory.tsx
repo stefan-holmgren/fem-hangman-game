@@ -34,13 +34,14 @@ export default function PickCategory() {
       case "ArrowUp":
         liIndex -= columns;
         break;
+
       case "ArrowRight":
-        if (columns > 1) {
+        if (columns > 1 && liIndex % columns < columns - 1) {
           liIndex += 1;
         }
         break;
       case "ArrowLeft":
-        if (columns > 1) {
+        if (columns > 1 && liIndex % columns > 0) {
           liIndex -= 1;
         }
         break;
