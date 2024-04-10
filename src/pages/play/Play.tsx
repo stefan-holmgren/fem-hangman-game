@@ -101,6 +101,7 @@ export default function Play() {
     }
     if (key.match(/^[A-Z]$/)) {
       guess(key);
+      lettersRef?.focusLetter(key);
     }
   };
 

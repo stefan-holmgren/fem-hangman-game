@@ -3,6 +3,7 @@ import style from "./Letters.module.scss";
 
 export type LettersRef = {
   focus: () => void;
+  focusLetter: (letter: string) => void;
 };
 
 type LettersProps = {
@@ -26,6 +27,10 @@ export default function Letters(props: LettersProps) {
         requestAnimationFrame(() => {
           keyButtons[0]?.focus();
         });
+      },
+      focusLetter: (letter: string) => {
+        const letterIndex = letters.indexOf(letter);
+        keyButtons[letterIndex]?.focus();
       },
     });
   }
